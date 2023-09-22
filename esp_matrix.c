@@ -63,7 +63,7 @@ void matrix_mul(matrix_t A, matrix_t B, matrix_t* C)
         C->cols = 0;
         C->array = NULL;
 
-        ESP_LOGE(TAG, "Wrong array dimensions to mul!");
+        ESP_LOGE(TAG, "Wrong array dimensions to multiplicate!");
     }
 
     C->rows = A.rows;
@@ -130,7 +130,7 @@ void matrix_sub(matrix_t A, matrix_t B, matrix_t* C)
         C->cols = 0;
         C->array = NULL;
 
-        ESP_LOGE(TAG, "Wrong array dimensions to sub!");
+        ESP_LOGE(TAG, "Wrong array dimensions to subtract!");
     }
 
     C->rows = A.rows;
@@ -160,7 +160,7 @@ void matrix_trans(matrix_t A, matrix_t* B)
         B->cols = 0;
         B->array = NULL;
 
-        ESP_LOGE(TAG, "Wrong array dimensions to trans!");
+        ESP_LOGE(TAG, "Wrong array dimensions to transpose!");
     }
 
     B->rows = A.cols;
@@ -251,7 +251,7 @@ void matrix_inv(matrix_t A, matrix_t* B)
         B->cols = 0;
         B->array = NULL;
 
-        ESP_LOGE(TAG, "Wrong array dimensions to inv!");
+        ESP_LOGE(TAG, "Wrong array dimensions to inverse!");
     }
 
     // find determinant
@@ -262,7 +262,7 @@ void matrix_inv(matrix_t A, matrix_t* B)
         B->rows = 0;
         B->cols = 0;
 
-        ESP_LOGE(TAG, "Array determinant equal 0!");
+        ESP_LOGE(TAG, "Array determinant equals 0!");
     }
 
     B->rows = A.rows;
