@@ -3,7 +3,7 @@
  * @author JanG175
  * @brief MATRIX OPERATIONS LIBRARY
  * 
- * @copyright Copyright (c) 2023
+ * @copyright Apache 2.0
  */
 
 #include <stdio.h>
