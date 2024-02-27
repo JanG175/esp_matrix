@@ -66,12 +66,15 @@ void matrix_mul(matrix_t* A, matrix_t* B, matrix_t* C)
         ESP_LOGE(TAG, "Wrong array dimensions to multiplicate!");
     }
 
-    C->rows = A->rows;
-    C->cols = B->cols;
+    if (C->rows != A->rows || C->cols != B->cols)
+    {
+        C->rows = A->rows;
+        C->cols = B->cols;
 
-    C->array = (double**)realloc(C->array, C->rows * sizeof(double*));
-    for (uint32_t i = 0; i < C->rows; i++)
-        C->array[i] = (double*)realloc(C->array[i], C->cols * sizeof(double));
+        C->array = (double**)realloc(C->array, C->rows * sizeof(double*));
+        for (uint32_t i = 0; i < C->rows; i++)
+            C->array[i] = (double*)realloc(C->array[i], C->cols * sizeof(double));
+    }
 
     for (uint32_t i = 0; i < C->rows; i++)
         for (uint32_t j = 0; j < C->cols; j++)
@@ -102,12 +105,15 @@ void matrix_add(matrix_t* A, matrix_t* B, matrix_t* C)
         ESP_LOGE(TAG, "Wrong array dimensions to add!");
     }
 
-    C->rows = A->rows;
-    C->cols = B->cols;
+    if (C->rows != A->rows || C->cols != B->cols)
+    {
+        C->rows = A->rows;
+        C->cols = B->cols;
 
-    C->array = (double**)realloc(C->array, C->rows * sizeof(double*));
-    for (uint32_t i = 0; i < C->rows; i++)
-        C->array[i] = (double*)realloc(C->array[i], C->cols * sizeof(double));
+        C->array = (double**)realloc(C->array, C->rows * sizeof(double*));
+        for (uint32_t i = 0; i < C->rows; i++)
+            C->array[i] = (double*)realloc(C->array[i], C->cols * sizeof(double));
+    }
 
     for (uint32_t i = 0; i < C->rows; i++)
         for (uint32_t j = 0; j < C->cols; j++)
@@ -133,12 +139,15 @@ void matrix_sub(matrix_t* A, matrix_t* B, matrix_t* C)
         ESP_LOGE(TAG, "Wrong array dimensions to subtract!");
     }
 
-    C->rows = A->rows;
-    C->cols = B->cols;
+    if (C->rows != A->rows || C->cols != B->cols)
+    {
+        C->rows = A->rows;
+        C->cols = B->cols;
 
-    C->array = (double**)realloc(C->array, C->rows * sizeof(double*));
-    for (uint32_t i = 0; i < C->rows; i++)
-        C->array[i] = (double*)realloc(C->array[i], C->cols * sizeof(double));
+        C->array = (double**)realloc(C->array, C->rows * sizeof(double*));
+        for (uint32_t i = 0; i < C->rows; i++)
+            C->array[i] = (double*)realloc(C->array[i], C->cols * sizeof(double));
+    }
 
     for (uint32_t i = 0; i < C->rows; i++)
         for (uint32_t j = 0; j < C->cols; j++)
@@ -163,12 +172,15 @@ void matrix_trans(matrix_t* A, matrix_t* B)
         ESP_LOGE(TAG, "Wrong array dimensions to transpose!");
     }
 
-    B->rows = A->cols;
-    B->cols = A->rows;
+    if (B->rows != A->cols || B->cols != A->rows)
+    {
+        B->rows = A->cols;
+        B->cols = A->rows;
 
-    B->array = (double**)realloc(B->array, B->rows * sizeof(double*));
-    for (uint32_t i = 0; i < B->rows; i++)
-        B->array[i] = (double*)realloc(B->array[i], B->cols * sizeof(double));
+        B->array = (double**)realloc(B->array, B->rows * sizeof(double*));
+        for (uint32_t i = 0; i < B->rows; i++)
+            B->array[i] = (double*)realloc(B->array[i], B->cols * sizeof(double));
+    }
 
     for (uint32_t i = 0; i < B->rows; i++)
         for (uint32_t j = 0; j < B->cols; j++)
@@ -265,12 +277,15 @@ void matrix_inv(matrix_t* A, matrix_t* B)
         ESP_LOGE(TAG, "Array determinant equals 0!");
     }
 
-    B->rows = A->rows;
-    B->cols = A->cols;
+    if (B->rows != A->rows || B->cols != A->cols)
+    {
+        B->rows = A->rows;
+        B->cols = A->cols;
 
-    B->array = (double**)realloc(B->array, B->rows * sizeof(double*));
-    for (uint32_t i = 0; i < B->rows; i++)
-        B->array[i] = (double*)realloc(B->array[i], B->cols * sizeof(double));
+        B->array = (double**)realloc(B->array, B->rows * sizeof(double*));
+        for (uint32_t i = 0; i < B->rows; i++)
+            B->array[i] = (double*)realloc(B->array[i], B->cols * sizeof(double));
+    }
 
     if (A->rows == 1)
     {
